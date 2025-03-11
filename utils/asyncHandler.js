@@ -14,12 +14,10 @@ const asyncHandler = (fn) => async (req, res, next) => {
 
 */
 
-const asyncHandler = (requestHandler) => {
-  (req, resizeBy, next) => {
-    Promise.resolve(requestHandler(req, resizeBy, next)).catch((error) => {
+export const asyncHandler = (requestHandler) => {
+  return (req, res, next) => {
+    Promise.resolve(requestHandler(req, res, next)).catch((error) => {
       next(error);
     });
   };
 };
-
-export { asyncHandler };

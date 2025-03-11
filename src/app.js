@@ -2,6 +2,8 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+// user Routes
+import { userRouter } from "../routes/user.routes.js";
 dotenv.config();
 
 const app = express();
@@ -20,4 +22,6 @@ app.use(express.static("public"));
 
 app.use(cookieParser());
 
+// Routes  Declarations for user
+app.use("/api/v1/users", userRouter);
 export { app };
